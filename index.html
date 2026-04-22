@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+  <title>TuiGo</title>
+  <meta name="theme-color" content="#0c1219"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="loading-screen">
+  <div class="loader-inner">
+    <svg width="60" height="60" viewBox="0 0 52 52" fill="none">
+      <circle cx="26" cy="26" r="24" stroke="#00e5a0" stroke-width="2" stroke-dasharray="6 3"/>
+      <path d="M16 32L26 16L36 32" stroke="#00e5a0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="26" cy="34" r="3" fill="#00e5a0"/>
+    </svg>
+    <h1 class="brand">TuiGo</h1>
+    <p class="tagline">Student Rides · Real Routes</p>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+  </div>
+</div>
+
+<!-- AUTH -->
+<div id="auth-screen" class="screen hidden">
+  <div class="auth-blob b1"></div>
+  <div class="auth-blob b2"></div>
+  <div class="auth-card">
+    <div class="auth-logo">
+      <svg width="36" height="36" viewBox="0 0 52 52" fill="none">
+        <circle cx="26" cy="26" r="24" stroke="#00e5a0" stroke-width="2" stroke-dasharray="6 3"/>
+        <path d="M16 32L26 16L36 32" stroke="#00e5a0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="26" cy="34" r="3" fill="#00e5a0"/>
+      </svg>
+      <span>TuiGo</span>
+    </div>
+    <h2>Welcome</h2>
+    <p class="sub">Ride with classmates to tuition</p>
+    <button class="btn-google" id="btn-google-signin">
+      <svg width="20" height="20" viewBox="0 0 48 48">
+        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+        <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+        <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+      </svg>
+      <span>Continue with Google</span>
+    </button>
+    <p id="auth-err" class="err-txt hidden"></p>
+  </div>
+</div>
+
+<!-- PROFILE SETUP (first time) -->
+<div id="setup-screen" class="screen hidden">
+  <div class="setup-wrap">
+    <img id="setup-gphoto" class="setup-gphoto" src="" alt=""/>
+    <h2>Complete Your Profile</h2>
+    <p class="sub">One-time · 30 seconds</p>
+
+    <div class="fields">
+      <input type="text" id="f-name" placeholder="Full name *"/>
+      <div class="ph-row">
+        <span class="cc">+91</span>
+        <input type="tel" id="f-phone" placeholder="Phone number *" maxlength="10" inputmode="numeric"/>
+      </div>
+      <div class="ph-row">
+        <span class="cc">+91</span>
+        <input type="tel" id="f-wa" placeholder="WhatsApp (if different from phone)" maxlength="10" inputmode="numeric"/>
+      </div>
+      <input type="text" id="f-tuition" placeholder="Tuition center name *"/>
+      <select id="f-zone">
+        <option value="">Select zone *</option>
+        <option value="A">Zone A (0–2 km)</option>
+        <option value="B">Zone B (2–4 km)</option>
+        <option value="C">Zone C (4–6 km)</option>
+      </select>
+      <input type="time" id="f-time"/>
+      <div class="vehicle-hint">
+        <span>🏍️</span>
+        <span>Have a bike? Add vehicle info to also offer rides!</span>
+      </div>
+      <input type="text" id="f-vehicle" placeholder="Vehicle (e.g. Honda Activa) — optional"/>
+      <input type="text" id="f-vno" placeholder="Vehicle number (e.g. WB 00 AB 1234) — optional"/>
+    </div>
+
+    <button class="btn-primary" id="btn-save-profile">
+      <span>Start TuiGo →</span>
+    </button>
+    <p id="setup-err" class="err-txt hidden"></p>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app-screen" class="screen hidden">
+
+  <!-- HEADER -->
+  <header class="top-nav">
+    <div class="nav-brand">
+      <svg width="20" height="20" viewBox="0 0 52 52" fill="none">
+        <circle cx="26" cy="26" r="24" stroke="#00e5a0" stroke-width="2" stroke-dasharray="6 3"/>
+        <path d="M16 32L26 16L36 32" stroke="#00e5a0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="26" cy="34" r="3" fill="#00e5a0"/>
+      </svg>
+      <span>TuiGo</span>
+    </div>
+    <div class="nav-right">
+      <button class="notif-btn" id="btn-notifs">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="notif-dot hidden" id="notif-dot"></span>
+      </button>
+      <button class="profile-nav-btn" id="btn-profile-nav">
+        <img id="nav-dp" class="nav-dp" src="" alt=""/>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAP VIEW -->
+  <div id="view-map" class="view active">
+    <div id="map"></div>
+
+    <!-- Status bar -->
+    <div class="map-bar" id="map-bar">
+      <span id="map-status">Locating…</span>
+      <span class="nearby-chip" id="nearby-chip">0 nearby</span>
+    </div>
+
+    <!-- Mode toggle (Travelling / Riding) -->
+    <div class="mode-toggle" id="mode-toggle">
+      <button class="mode-btn active" id="btn-mode-traveller" data-mode="traveller">
+        🎒 Travelling
+      </button>
+      <button class="mode-btn" id="btn-mode-rider" data-mode="rider">
+        🏍️ Riding
+      </button>
+    </div>
+
+    <!-- Book ride button (traveller only) -->
+    <button class="btn-book-ride hidden" id="btn-book-ride">
+      📍 Book a Ride Now
+    </button>
+
+    <!-- Rider go-online toggle -->
+    <div class="rider-toggle-wrap hidden" id="rider-online-wrap">
+      <button class="btn-rider-online offline" id="btn-rider-online">
+        <span class="odot"></span>
+        <span id="online-lbl">Go Online</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- RIDES VIEW -->
+  <div id="view-rides" class="view hidden">
+    <div class="view-hdr"><h3>Ride History</h3></div>
+    <div id="history-list" class="list-wrap">
+      <div class="empty-state">
+        <p>No rides yet</p>
+        <small>Your rides appear here (cleared every 24h)</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTIFICATIONS VIEW -->
+  <div id="view-notifs" class="view hidden">
+    <div class="view-hdr"><h3>Notifications</h3></div>
+    <div id="notif-list" class="list-wrap">
+      <div class="empty-state"><p>No notifications</p></div>
+    </div>
+  </div>
+
+  <!-- PROFILE VIEW -->
+  <div id="view-profile" class="view hidden">
+    <div class="profile-wrap">
+      <img id="profile-big-dp" class="profile-big-dp" src="" alt=""/>
+      <h2 id="profile-name-big"></h2>
+      <p id="profile-email-big" class="sub"></p>
+
+      <div class="info-grid">
+        <div class="info-row"><span>📞 Phone</span><span id="pi-phone">—</span></div>
+        <div class="info-row"><span>💬 WhatsApp</span><span id="pi-wa">—</span></div>
+        <div class="info-row"><span>🏫 Tuition</span><span id="pi-tuition">—</span></div>
+        <div class="info-row"><span>📍 Zone</span><span id="pi-zone">—</span></div>
+        <div class="info-row"><span>⏰ Time</span><span id="pi-time">—</span></div>
+        <div class="info-row" id="pi-vehicle-row"><span>🏍️ Vehicle</span><span id="pi-vehicle">—</span></div>
+        <div class="info-row"><span>⭐ Rating</span><span id="pi-rating">—</span></div>
+        <div class="info-row"><span>🚗 Total Rides</span><span id="pi-rides">0</span></div>
+      </div>
+
+      <button class="btn-primary" id="btn-edit-profile">Edit Profile</button>
+      <button class="btn-danger" id="btn-signout">Sign Out</button>
+    </div>
+  </div>
+
+  <!-- TAB BAR -->
+  <nav class="tab-bar">
+    <button class="tab" data-view="map">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l6-3 6 3 6-3v13l-6 3-6-3-6 3V7z"/></svg>
+      <span>Map</span>
+    </button>
+    <button class="tab" data-view="rides">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      <span>Rides</span>
+    </button>
+    <button class="tab" data-view="notifs">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      <span>Alerts</span>
+    </button>
+    <button class="tab" data-view="profile">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      <span>Profile</span>
+    </button>
+  </nav>
+
+</div><!-- /app-screen -->
+
+<!-- ═══════════ ACTIVE RIDE PANEL (slides up over tab bar) ═══════════ -->
+<div id="ride-panel" class="ride-panel hidden">
+  <div class="panel-handle"></div>
+
+  <!-- TRAVELLER: searching for rider -->
+  <div id="rp-searching" class="rp hidden">
+    <div class="rp-spinner"></div>
+    <h3>Finding a rider…</h3>
+    <p class="sub">Searching for nearby riders</p>
+    <button class="btn-outline" id="btn-cancel-search">Cancel Request</button>
+  </div>
+
+  <!-- TRAVELLER: rider accepted, showing rider info -->
+  <div id="rp-traveller-active" class="rp hidden">
+    <div class="rp-person-row">
+      <img id="ta-dp" class="rp-dp" src="" alt=""/>
+      <div class="rp-info">
+        <h3 id="ta-name">—</h3>
+        <p id="ta-vehicle" class="sub"></p>
+        <p id="ta-vno" class="sub"></p>
+      </div>
+      <div class="rp-eta-box">
+        <div class="eta-num" id="ta-eta">—</div>
+        <div class="eta-lbl">ETA</div>
+      </div>
+    </div>
+
+    <!-- Ride status steps -->
+    <div class="status-steps">
+      <div class="sstep active" id="ss-accepted"><div class="ss-dot"></div><span>Accepted</span></div>
+      <div class="ss-line" id="sl-1"></div>
+      <div class="sstep" id="ss-arriving"><div class="ss-dot"></div><span>Arriving</span></div>
+      <div class="ss-line" id="sl-2"></div>
+      <div class="sstep" id="ss-onway"><div class="ss-dot"></div><span>Picked Up</span></div>
+      <div class="ss-line" id="sl-3"></div>
+      <div class="sstep" id="ss-done"><div class="ss-dot"></div><span>Arrived</span></div>
+    </div>
+
+    <div class="rp-actions">
+      <a id="ta-call" class="act-btn act-call" href="#">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 12 19.79 19.79 0 0 1 1 3.4 2 2 0 0 1 3 1.4h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
+        Call Rider
+      </a>
+      <a id="ta-wa" class="act-btn act-wa" href="#" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+    <button class="btn-outline" id="btn-cancel-ride-t">Cancel Ride</button>
+  </div>
+
+  <!-- RIDER: incoming request card -->
+  <div id="rp-rider-request" class="rp hidden">
+    <div class="req-header">
+      <h3 class="req-title">🔔 New Ride Request</h3>
+      <div class="req-timer-wrap">
+        <svg class="req-ring" viewBox="0 0 48 48">
+          <circle cx="24" cy="24" r="20" fill="none" stroke="#243044" stroke-width="3"/>
+          <circle id="req-arc" cx="24" cy="24" r="20" fill="none" stroke="#00e5a0" stroke-width="3"
+            stroke-linecap="round" stroke-dasharray="125.6" stroke-dashoffset="0"
+            transform="rotate(-90 24 24)"/>
+        </svg>
+        <span id="req-timer-num" class="req-timer-num">30</span>
+      </div>
+    </div>
+
+    <div class="rp-person-row">
+      <img id="req-dp" class="rp-dp" src="" alt=""/>
+      <div class="rp-info">
+        <h3 id="req-name">—</h3>
+        <p id="req-tuition" class="sub"></p>
+        <p id="req-zone" class="sub"></p>
+      </div>
+    </div>
+
+    <div class="req-details">
+      <div class="req-detail"><span>📍 Distance</span><span id="req-dist">—</span></div>
+      <div class="req-detail"><span>💰 Fare</span><span id="req-fare">—</span></div>
+    </div>
+
+    <div class="req-btns">
+      <button class="btn-reject" id="btn-reject">✕ Reject</button>
+      <button class="btn-accept" id="btn-accept">✓ Accept</button>
+    </div>
+  </div>
+
+  <!-- RIDER: managing active ride -->
+  <div id="rp-rider-active" class="rp hidden">
+    <div class="rp-person-row">
+      <img id="ra-dp" class="rp-dp" src="" alt=""/>
+      <div class="rp-info">
+        <h3 id="ra-name">—</h3>
+        <p id="ra-tuition" class="sub"></p>
+        <p id="ra-fare" class="fare-lbl"></p>
+      </div>
+    </div>
+
+    <div class="rp-actions">
+      <a id="ra-call" class="act-btn act-call" href="#">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 12 19.79 19.79 0 0 1 1 3.4 2 2 0 0 1 3 1.4h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
+        Call
+      </a>
+      <a id="ra-wa" class="act-btn act-wa" href="#" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <a id="ra-nav" class="act-btn act-nav" href="#" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+        Navigate
+      </a>
+    </div>
+
+    <button class="btn-primary" id="btn-rider-status">Mark Picked Up</button>
+    <button class="btn-outline" id="btn-cancel-ride-r">Cancel Ride</button>
+  </div>
+
+  <!-- COMPLETED (both see this) -->
+  <div id="rp-completed" class="rp hidden">
+    <div class="done-icon">✅</div>
+    <h3>Ride Complete!</h3>
+    <div class="fare-box" id="fare-box"></div>
+    <div class="pay-section">
+      <p class="sub">Payment</p>
+      <div class="pay-chips">
+        <button class="pay-chip active" data-pay="cash">💵 Cash</button>
+        <button class="pay-chip" data-pay="upi">📲 UPI</button>
+      </div>
+      <div id="upi-section" class="upi-section hidden">
+        <p class="sub">Send to: <strong id="upi-id">—</strong></p>
+        <a id="upi-link" href="#" class="btn-primary btn-sm" target="_blank">Open UPI App</a>
+      </div>
+    </div>
+    <button class="btn-primary" id="btn-done-rate">Done &amp; Rate ★</button>
+  </div>
+
+</div><!-- /ride-panel -->
+
+<!-- RATING MODAL -->
+<div id="rating-modal" class="modal-bg hidden">
+  <div class="modal">
+    <h3>Rate Your Ride</h3>
+    <p class="sub" id="rating-whom"></p>
+    <div class="stars" id="stars">
+      <span class="star" data-v="1">★</span>
+      <span class="star" data-v="2">★</span>
+      <span class="star" data-v="3">★</span>
+      <span class="star" data-v="4">★</span>
+      <span class="star" data-v="5">★</span>
+    </div>
+    <textarea id="rating-comment" rows="3" placeholder="Optional feedback…"></textarea>
+    <button class="btn-primary" id="btn-submit-rating">Submit</button>
+    <button class="btn-outline" id="btn-skip-rating">Skip</button>
+  </div>
+</div>
+
+<!-- EDIT PROFILE MODAL -->
+<div id="edit-modal" class="modal-bg hidden">
+  <div class="modal">
+    <button class="modal-x" id="btn-edit-close">✕</button>
+    <h3>Edit Profile</h3>
+    <div class="fields">
+      <input type="text" id="ep-name" placeholder="Full name"/>
+      <div class="ph-row">
+        <span class="cc">+91</span>
+        <input type="tel" id="ep-phone" placeholder="Phone" maxlength="10" inputmode="numeric"/>
+      </div>
+      <div class="ph-row">
+        <span class="cc">+91</span>
+        <input type="tel" id="ep-wa" placeholder="WhatsApp" maxlength="10" inputmode="numeric"/>
+      </div>
+      <input type="text" id="ep-tuition" placeholder="Tuition center"/>
+      <select id="ep-zone">
+        <option value="A">Zone A</option>
+        <option value="B">Zone B</option>
+        <option value="C">Zone C</option>
+      </select>
+      <input type="time" id="ep-time"/>
+      <input type="text" id="ep-vehicle" placeholder="Vehicle (optional)"/>
+      <input type="text" id="ep-vno" placeholder="Vehicle number (optional)"/>
+    </div>
+    <button class="btn-primary" id="btn-save-edit">Save Changes</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast" class="toast hidden"></div>
+
+<!-- Firebase -->
+<script type="module">
+  import { initializeApp }           from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut }
+                                     from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  import { getFirestore, doc, setDoc, getDoc, updateDoc, addDoc, deleteDoc,
+           collection, onSnapshot, query, where, orderBy, limit,
+           serverTimestamp, getDocs, writeBatch, Timestamp }
+                                     from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey:            "AIzaSyAFDqCvk94sNIGZIsY7Rj_tZnOZOeioc_s",
+    authDomain:        "tuigo-app.firebaseapp.com",
+    projectId:         "tuigo-app",
+    storageBucket:     "tuigo-app.firebasestorage.app",
+    messagingSenderId: "699449096848",
+    appId:             "1:699449096848:web:cbcb7b80d356ab64cb7615"
+  };
+
+  const app  = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db   = getFirestore(app);
+
+  window._fb = {
+    auth, db, signOut,
+    GoogleAuthProvider, signInWithPopup, onAuthStateChanged,
+    doc, setDoc, getDoc, updateDoc, addDoc, deleteDoc,
+    collection, onSnapshot, query, where, orderBy, limit,
+    serverTimestamp, getDocs, writeBatch, Timestamp
+  };
+
+  window.addEventListener("load", () => { window._appInit && window._appInit(); });
+</script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
