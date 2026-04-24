@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+  <title>TuiGo</title>
+  <meta name="theme-color" content="#0c1219"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="screen-loading">
+  <div class="load-inner">
+    <svg width="56" height="56" viewBox="0 0 52 52" fill="none">
+      <circle cx="26" cy="26" r="24" stroke="#00e5a0" stroke-width="2" stroke-dasharray="6 3"/>
+      <path d="M16 32L26 16L36 32" stroke="#00e5a0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="26" cy="34" r="3" fill="#00e5a0"/>
+    </svg>
+    <div class="load-title">TuiGo</div>
+    <div class="load-bar"><div class="load-fill"></div></div>
+  </div>
+</div>
+
+<!-- AUTH -->
+<div id="screen-auth" class="screen hidden">
+  <div class="auth-wrap">
+    <svg width="48" height="48" viewBox="0 0 52 52" fill="none">
+      <circle cx="26" cy="26" r="24" stroke="#00e5a0" stroke-width="2" stroke-dasharray="6 3"/>
+      <path d="M16 32L26 16L36 32" stroke="#00e5a0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="26" cy="34" r="3" fill="#00e5a0"/>
+    </svg>
+    <h1>TuiGo</h1>
+    <p class="dim">Student ride sharing</p>
+    <button id="btn-google" class="google-btn">
+      <svg width="20" height="20" viewBox="0 0 48 48">
+        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+        <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+        <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+      </svg>
+      Sign in with Google
+    </button>
+    <p id="auth-err" class="err hidden"></p>
+  </div>
+</div>
+
+<!-- PROFILE SETUP -->
+<div id="screen-setup" class="screen hidden">
+  <div class="setup-wrap">
+    <img id="g-photo" class="g-photo" src="" alt=""/>
+    <h2>Setup Profile</h2>
+    <p class="dim">Only once — 30 seconds</p>
+    <div class="flist">
+      <input id="s-name"    type="text" placeholder="Your name *"/>
+      <div class="ph-wrap"><span class="ph-cc">+91</span><input id="s-phone" type="tel" placeholder="Phone number *" maxlength="10" inputmode="numeric"/></div>
+      <div class="ph-wrap"><span class="ph-cc">+91</span><input id="s-wa"    type="tel" placeholder="WhatsApp (if different)" maxlength="10" inputmode="numeric"/></div>
+      <div class="hint-box">🏍️ Have a bike? Add vehicle info to offer rides too.</div>
+      <input id="s-vehicle" type="text" placeholder="Vehicle (e.g. Honda Activa) — optional"/>
+      <input id="s-vno"     type="text" placeholder="Vehicle number — optional"/>
+    </div>
+    <button id="btn-save-setup" class="btn-primary">Save &amp; Continue</button>
+    <p id="setup-err" class="err hidden"></p>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="screen-app" class="screen hidden">
+
+  <!-- NAV -->
+  <div class="nav">
+    <div class="nav-logo">
+      <svg width="20" height="20" viewBox="0 0 52 52" fill="none">
+        <circle cx="26" cy="26" r="24" stroke="#00e5a0" stroke-width="2" stroke-dasharray="6 3"/>
+        <path d="M16 32L26 16L36 32" stroke="#00e5a0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="26" cy="34" r="3" fill="#00e5a0"/>
+      </svg>
+      TuiGo
+    </div>
+    <button id="btn-nav-profile" class="nav-profile-btn">
+      <img id="nav-dp" class="nav-dp" src="" alt=""/>
+    </button>
+  </div>
+
+  <!-- MAP TAB -->
+  <div id="tab-map" class="tab-content active">
+    <div id="map"></div>
+
+    <!-- Mode pill -->
+    <div class="mode-pill">
+      <button id="btn-traveller" class="mode-opt active">🎒 Traveller</button>
+      <button id="btn-rider"     class="mode-opt">🏍️ Rider</button>
+    </div>
+
+    <!-- TRAVELLER UI -->
+    <div id="ui-traveller" class="map-ui">
+      <div class="pickup-card">
+        <div class="pickup-row">
+          <div class="pickup-dot"></div>
+          <div class="pickup-text">
+            <div class="pickup-label">Your location</div>
+            <div id="my-loc-txt" class="pickup-val">Locating…</div>
+          </div>
+        </div>
+        <div class="pickup-divider"></div>
+        <div class="pickup-row">
+          <div class="pickup-dot dest"></div>
+          <div class="pickup-text">
+            <div class="pickup-label">Destination</div>
+            <input id="dest-input" class="dest-input" type="text" placeholder="Type destination or tap map"/>
+          </div>
+        </div>
+        <div class="tap-hint" id="tap-hint">👆 Or tap anywhere on map to set destination</div>
+      </div>
+      <button id="btn-book" class="btn-book">🚀 Book Ride Now</button>
+    </div>
+
+    <!-- RIDER UI -->
+    <div id="ui-rider" class="map-ui hidden">
+      <button id="btn-online" class="btn-online offline">
+        <span class="o-dot"></span>
+        <span id="online-txt">Go Online to Receive Rides</span>
+      </button>
+      <div id="rider-status-bar" class="rider-status hidden">
+        <span class="green-dot"></span> Online — waiting for requests
+      </div>
+    </div>
+  </div>
+
+  <!-- RIDES TAB -->
+  <div id="tab-rides" class="tab-content hidden">
+    <div class="tab-hdr">Ride History <span class="dim" style="font-size:11px;font-weight:400">(cleared every 24h)</span></div>
+    <div id="history-list" class="scroll-list">
+      <div class="empty">No rides yet</div>
+    </div>
+  </div>
+
+  <!-- PROFILE TAB -->
+  <div id="tab-profile" class="tab-content hidden">
+    <div class="profile-scroll">
+      <img id="p-dp"   class="p-dp" src="" alt=""/>
+      <div id="p-name" class="p-name"></div>
+      <div id="p-email" class="dim" style="font-size:13px;text-align:center"></div>
+      <div class="info-card">
+        <div class="info-row"><span>📞</span><span id="p-phone">—</span></div>
+        <div class="info-row"><span>💬</span><span id="p-wa">—</span></div>
+        <div class="info-row" id="p-vehicle-row"><span>🏍️</span><span id="p-vehicle">—</span></div>
+        <div class="info-row"><span>⭐</span><span id="p-rating">New</span></div>
+        <div class="info-row"><span>🚗</span><span id="p-rides">0 rides</span></div>
+      </div>
+      <button id="btn-edit" class="btn-primary">Edit Profile</button>
+      <button id="btn-signout" class="btn-ghost">Sign Out</button>
+    </div>
+  </div>
+
+  <!-- BOTTOM TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="map">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 7l6-3 6 3 6-3v13l-6 3-6-3-6 3V7z"/></svg>
+      Map
+    </button>
+    <button class="tab-btn" data-tab="rides">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      Rides
+    </button>
+    <button class="tab-btn" data-tab="profile">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      Profile
+    </button>
+  </div>
+</div>
+
+<!-- ACTIVE RIDE PANEL (slides up) -->
+<div id="ride-panel" class="ride-panel hidden">
+  <div class="panel-pill"></div>
+
+  <!-- searching -->
+  <div id="rp-searching" class="rp hidden">
+    <div class="spin"></div>
+    <div class="rp-title">Finding a rider…</div>
+    <div class="rp-sub">Notifying nearby riders</div>
+    <button id="btn-cancel-book" class="btn-ghost mt">Cancel</button>
+  </div>
+
+  <!-- traveller: ride accepted -->
+  <div id="rp-accepted" class="rp hidden">
+    <div class="rp-title" id="rp-accepted-title">Rider on the way!</div>
+    <div class="person-row">
+      <img id="acc-dp" class="person-dp" src="" alt=""/>
+      <div class="person-info">
+        <div id="acc-name" class="person-name"></div>
+        <div id="acc-vehicle" class="dim"></div>
+        <div id="acc-phone-txt" class="dim"></div>
+      </div>
+      <div class="eta-box">
+        <div id="acc-eta" class="eta-num">—</div>
+        <div class="eta-lbl">ETA</div>
+      </div>
+    </div>
+    <!-- status steps -->
+    <div class="steps">
+      <div class="step active" id="st-0"><div class="step-dot"></div><span>Accepted</span></div>
+      <div class="step-line" id="sl-0"></div>
+      <div class="step" id="st-1"><div class="step-dot"></div><span>On Way</span></div>
+      <div class="step-line" id="sl-1"></div>
+      <div class="step" id="st-2"><div class="step-dot"></div><span>Picked Up</span></div>
+      <div class="step-line" id="sl-2"></div>
+      <div class="step" id="st-3"><div class="step-dot"></div><span>Arrived</span></div>
+    </div>
+    <div class="action-row">
+      <a id="acc-call" class="act act-call" href="#"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 12 19.79 19.79 0 0 1 1 3.4 2 2 0 0 1 3 1.4h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 16.92z"/></svg> Call</a>
+      <a id="acc-wa"   class="act act-wa"   href="#" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg> WhatsApp</a>
+    </div>
+    <button id="btn-cancel-ride-t" class="btn-ghost mt">Cancel Ride</button>
+  </div>
+
+  <!-- rider: incoming request -->
+  <div id="rp-request" class="rp hidden">
+    <div class="req-top">
+      <div class="rp-title">🔔 New Ride Request</div>
+      <div class="timer-wrap">
+        <svg width="48" height="48" viewBox="0 0 48 48">
+          <circle cx="24" cy="24" r="20" fill="none" stroke="#243044" stroke-width="3"/>
+          <circle id="timer-arc" cx="24" cy="24" r="20" fill="none" stroke="#00e5a0" stroke-width="3"
+            stroke-linecap="round" stroke-dasharray="125.6" stroke-dashoffset="0" transform="rotate(-90 24 24)"/>
+        </svg>
+        <span id="timer-num" class="timer-num">30</span>
+      </div>
+    </div>
+    <div class="person-row">
+      <img id="req-dp" class="person-dp" src="" alt=""/>
+      <div class="person-info">
+        <div id="req-name" class="person-name"></div>
+        <div id="req-dest" class="dim"></div>
+        <div id="req-dist" class="dim"></div>
+      </div>
+    </div>
+    <div id="req-fare-box" class="fare-preview"></div>
+    <div class="req-btns">
+      <button id="btn-reject" class="btn-reject">✕ Reject</button>
+      <button id="btn-accept" class="btn-accept">✓ Accept</button>
+    </div>
+  </div>
+
+  <!-- rider: managing ride -->
+  <div id="rp-rider-active" class="rp hidden">
+    <div class="rp-title">Active Ride</div>
+    <div class="person-row">
+      <img id="ra-dp" class="person-dp" src="" alt=""/>
+      <div class="person-info">
+        <div id="ra-name" class="person-name"></div>
+        <div id="ra-dest" class="dim"></div>
+      </div>
+      <div class="fare-badge" id="ra-fare"></div>
+    </div>
+    <div class="action-row">
+      <a id="ra-call" class="act act-call" href="#"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 12 19.79 19.79 0 0 1 1 3.4 2 2 0 0 1 3 1.4h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 16.92z"/></svg> Call</a>
+      <a id="ra-wa"   class="act act-wa"   href="#" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg> WhatsApp</a>
+      <a id="ra-nav" class="act act-nav" href="#" target="_blank"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg> Navigate</a>
+    </div>
+    <button id="btn-rider-step" class="btn-primary mt">Mark Picked Up</button>
+    <button id="btn-cancel-ride-r" class="btn-ghost mt">Cancel Ride</button>
+  </div>
+
+  <!-- completed -->
+  <div id="rp-done" class="rp hidden">
+    <div class="done-check">✅</div>
+    <div class="rp-title">Ride Complete!</div>
+    <div id="done-fare" class="fare-big"></div>
+    <div class="pay-row">
+      <button class="pay-opt active" data-pay="cash">💵 Cash</button>
+      <button class="pay-opt" data-pay="upi">📲 UPI</button>
+    </div>
+    <div id="upi-box" class="upi-box hidden"></div>
+    <button id="btn-done" class="btn-primary mt">Done &amp; Rate ★</button>
+  </div>
+</div>
+
+<!-- RATING SHEET -->
+<div id="rating-sheet" class="sheet-bg hidden">
+  <div class="sheet">
+    <div class="sheet-title">Rate Your Ride</div>
+    <div id="rate-whom" class="dim" style="text-align:center;margin-bottom:12px"></div>
+    <div class="star-row" id="star-row">
+      <span class="star" data-v="1">★</span>
+      <span class="star" data-v="2">★</span>
+      <span class="star" data-v="3">★</span>
+      <span class="star" data-v="4">★</span>
+      <span class="star" data-v="5">★</span>
+    </div>
+    <textarea id="rate-comment" rows="3" placeholder="Optional feedback…"></textarea>
+    <button id="btn-rate-submit" class="btn-primary">Submit Rating</button>
+    <button id="btn-rate-skip"   class="btn-ghost">Skip</button>
+  </div>
+</div>
+
+<!-- EDIT PROFILE SHEET -->
+<div id="edit-sheet" class="sheet-bg hidden">
+  <div class="sheet">
+    <div class="sheet-title">Edit Profile</div>
+    <div class="flist">
+      <input id="e-name"    type="text" placeholder="Name"/>
+      <div class="ph-wrap"><span class="ph-cc">+91</span><input id="e-phone" type="tel" placeholder="Phone" maxlength="10" inputmode="numeric"/></div>
+      <div class="ph-wrap"><span class="ph-cc">+91</span><input id="e-wa"    type="tel" placeholder="WhatsApp" maxlength="10" inputmode="numeric"/></div>
+      <input id="e-vehicle" type="text" placeholder="Vehicle (optional)"/>
+      <input id="e-vno"     type="text" placeholder="Vehicle number (optional)"/>
+    </div>
+    <button id="btn-edit-save"   class="btn-primary">Save</button>
+    <button id="btn-edit-cancel" class="btn-ghost">Cancel</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast" class="toast hidden"></div>
+
+<!-- Firebase (module) -->
+<script type="module">
+  import { initializeApp }    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut }
+    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  import { getFirestore, doc, setDoc, getDoc, updateDoc, addDoc, deleteDoc,
+            collection, onSnapshot, query, where, getDocs, writeBatch }
+    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  const cfg = {
+    apiKey:            "AIzaSyAFDqCvk94sNIGZIsY7Rj_tZnOZOeioc_s",
+    authDomain:        "tuigo-app.firebaseapp.com",
+    projectId:         "tuigo-app",
+    storageBucket:     "tuigo-app.firebasestorage.app",
+    messagingSenderId: "699449096848",
+    appId:             "1:699449096848:web:cbcb7b80d356ab64cb7615"
+  };
+  const app  = initializeApp(cfg);
+  const auth = getAuth(app);
+  const db   = getFirestore(app);
+
+  window._fb = { auth, db, GoogleAuthProvider, signInWithPopup,
+    onAuthStateChanged, signOut,
+    doc, setDoc, getDoc, updateDoc, addDoc, deleteDoc,
+    collection, onSnapshot, query, where, getDocs, writeBatch };
+
+  window.dispatchEvent(new Event("fb-ready"));
+</script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
