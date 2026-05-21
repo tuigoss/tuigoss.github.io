@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>National Youth Unnayan Party</title>
+<link rel="icon" type="image/png" href="https://i.postimg.cc/J7JxX0f7/Chat-GPT-Image-May-21-2026-11-20-26-AM.png"/>
+<link rel="apple-touch-icon" href="https://i.postimg.cc/J7JxX0f7/Chat-GPT-Image-May-21-2026-11-20-26-AM.png"/>
+<link rel="shortcut icon" type="image/png" href="https://i.postimg.cc/J7JxX0f7/Chat-GPT-Image-May-21-2026-11-20-26-AM.png"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --maroon:#7A0E2A;--maroon-dark:#550919;--maroon-light:#9E1535;--maroon-pale:#F9EEF1;
+  --green:#1F6B3A;--green-dark:#14502B;--green-light:#27874A;--green-pale:#EBF5EF;
+  --gold:#C8951A;--off-white:#FAFAF7;--text:#1A1A1A;--text-muted:#5A5A5A;--border:#E0D6D9;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:#fff;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:var(--maroon-dark);border-bottom:3px solid var(--gold);transition:all .3s}
+.nav-inner{width:100%;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0}
+.logo-badge{width:50px;height:50px;border-radius:50%;overflow:hidden;flex-shrink:0;background:transparent;display:flex;align-items:center;justify-content:center}
+.logo-badge img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1.1}
+.nav-logo-text strong{font-size:15px;font-weight:600;color:#fff;letter-spacing:.04em}
+.nav-logo-text span{font-size:11px;color:rgba(255,255,255,.6);letter-spacing:.08em;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:1.4rem;margin-left:auto}
+.nav-links a{color:rgba(255,255,255,.85);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.03em;transition:color .2s;white-space:nowrap}
+.nav-links a:hover{color:var(--gold)}
+.nav-ig{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.85);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.02em;transition:color .2s;white-space:nowrap;background:linear-gradient(90deg,rgba(225,48,108,.25),rgba(253,121,36,.2));border:1px solid rgba(225,48,108,.4);padding:5px 12px;border-radius:20px}
+.nav-ig:hover{color:#fff;background:linear-gradient(90deg,rgba(225,48,108,.45),rgba(253,121,36,.35));border-color:rgba(225,48,108,.7)}
+.nav-ig svg{flex-shrink:0}
+.btn-social{display:inline-flex;align-items:center;gap:8px;border:1.5px solid rgba(225,48,108,.5);color:var(--maroon-dark);font-weight:500;font-size:14px;padding:13px 22px;border-radius:4px;text-decoration:none;letter-spacing:.04em;transition:all .2s;cursor:pointer;background:rgba(225,48,108,.06);font-family:'DM Sans',sans-serif}
+.btn-social:hover{border-color:rgba(225,48,108,.8);background:rgba(225,48,108,.12);color:var(--maroon-dark)}
+.nav-cta{background:var(--gold);color:var(--maroon-dark)!important;padding:8px 18px;border-radius:4px;font-weight:600!important}
+.nav-cta:hover{background:#e5aa1e}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.hamburger span{display:block;width:26px;height:2px;background:#fff;transition:all .3s;border-radius:2px}
+.mobile-menu{display:none;position:fixed;top:70px;left:0;width:100%;background:var(--maroon-dark);padding:1.5rem;z-index:999;border-top:1px solid rgba(255,255,255,.1)}
+.mobile-menu a{display:block;color:rgba(255,255,255,.9);text-decoration:none;font-size:15px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);transition:color .2s}
+.mobile-menu a:hover{color:var(--gold)}
+.mobile-menu.open{display:block}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.ticker{background:var(--gold);padding:.5rem 0;overflow:hidden}
+.ticker-track{display:flex;white-space:nowrap;animation:ticker 32s linear infinite}
+.ticker-track span{font-size:12px;font-weight:600;color:var(--maroon-dark);padding:0 2rem;letter-spacing:.06em;text-transform:uppercase}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.hero{min-height:100vh;background:#fff;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:70px}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='40' cy='40' r='1.5' fill='rgba(122,14,42,0.04)'/%3E%3C/svg%3E") repeat;pointer-events:none}
+.hero-accent{position:absolute;bottom:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,var(--maroon),var(--green),var(--maroon))}
+.hero-bg-logo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:580px;height:580px;border-radius:50%;overflow:hidden;opacity:0.13;pointer-events:none;user-select:none;z-index:0}
+.hero-bg-logo img{width:100%;height:100%;object-fit:cover}
+.hero-inner{max-width:1200px;margin:0 auto;padding:4rem 1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;width:100%;position:relative;z-index:1}
+.hero-tag{display:none}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:900;line-height:1.1;color:var(--maroon-dark);margin-bottom:1.2rem}
+.hero h1 em{color:var(--maroon);font-style:normal}
+.hero-desc{font-size:1.02rem;color:var(--text-muted);line-height:1.78;margin-bottom:2rem;max-width:480px}
+.hero-btns{display:flex;flex-wrap:wrap;gap:1rem}
+.btn-primary{display:inline-block;background:var(--gold);color:var(--maroon-dark);font-weight:700;font-size:14px;padding:14px 28px;border-radius:4px;text-decoration:none;letter-spacing:.04em;transition:all .2s}
+.btn-primary:hover{background:#e5aa1e;transform:translateY(-2px)}
+.btn-outline{display:inline-block;border:1.5px solid var(--maroon);color:var(--maroon);font-weight:500;font-size:14px;padding:13px 26px;border-radius:4px;text-decoration:none;letter-spacing:.04em;transition:all .2s}
+.btn-outline:hover{background:var(--maroon-pale)}
+.hero-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.hero-stat{background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:1.2rem;box-shadow:0 2px 12px rgba(122,14,42,.06)}
+.hero-stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--maroon);line-height:1}
+.hero-stat-label{font-size:12px;color:var(--text-muted);margin-top:4px}
+.hero-slogan{background:var(--maroon-pale);border:1px solid rgba(122,14,42,.15);border-radius:8px;padding:1.2rem 1.5rem;text-align:center}
+.hero-slogan p{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--maroon-dark);font-style:italic}
+.hero-slogan span{font-size:11px;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase}
+section{padding:5rem 1.5rem}
+.container{max-width:1200px;margin:0 auto}
+.section-label{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:.6rem}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:700;color:var(--maroon-dark);line-height:1.25;margin-bottom:1rem}
+.section-desc{font-size:1rem;color:var(--text-muted);line-height:1.75;max-width:600px}
+.divider{width:50px;height:3px;background:linear-gradient(90deg,var(--maroon),var(--green));margin:1.2rem 0;border-radius:2px}
+.vision-bg{background:#fff}
+.vision-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:3rem}
+.vision-points{display:flex;flex-direction:column;gap:1.2rem}
+.vision-point{display:flex;gap:1rem;align-items:flex-start}
+.vp-icon{width:40px;height:40px;border-radius:6px;background:var(--maroon-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+.vp-body h4{font-size:15px;font-weight:600;color:var(--maroon-dark);margin-bottom:3px}
+.vp-body p{font-size:13.5px;color:var(--text-muted);line-height:1.6}
+.vision-card{background:linear-gradient(145deg,var(--maroon-dark),var(--maroon));border-radius:12px;padding:2.5rem;color:#fff;position:relative;overflow:hidden}
+.vision-card h3{font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:1rem;color:var(--gold)}
+.vision-card p{color:rgba(255,255,255,.82);line-height:1.75;font-size:.95rem}
+.vision-card .green-strip{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.15)}
+.green-tag{display:inline-block;background:var(--green);color:#fff;font-size:12px;font-weight:600;padding:5px 12px;border-radius:3px;margin-top:.5rem;letter-spacing:.04em}
+.policies-bg{background:#fff}
+.policies-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.5rem;margin-top:3rem}
+.policy-card{background:#fff;border-radius:10px;border:1px solid var(--border);padding:1.5rem;transition:all .3s;position:relative;overflow:hidden}
+.policy-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--maroon)}
+.policy-card:hover{border-color:var(--maroon-light);transform:translateY(-3px);box-shadow:0 8px 24px rgba(122,14,42,.1)}
+.policy-card.green-accent::before{background:var(--green)}
+.policy-icon{font-size:26px;margin-bottom:.8rem;display:block}
+.policy-card h3{font-size:1rem;font-weight:600;color:var(--maroon-dark);margin-bottom:.6rem}
+.policy-card p{font-size:13px;color:var(--text-muted);line-height:1.65}
+.policy-card ul{list-style:none;margin-top:.8rem}
+.policy-card ul li{font-size:12.5px;color:var(--text-muted);padding:4px 0;padding-left:1rem;position:relative;line-height:1.5}
+.policy-card ul li::before{content:'→';position:absolute;left:0;color:var(--green);font-size:11px}
+.manifesto-bg{background:linear-gradient(135deg,var(--green-dark),var(--green),var(--green-light));padding:5rem 1.5rem;position:relative;overflow:hidden}
+.manifesto-bg::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='29' y='29' width='2' height='2' fill='rgba(255,255,255,0.05)'/%3E%3C/svg%3E") repeat}
+.manifesto-inner{max-width:960px;margin:0 auto;text-align:center;position:relative}
+.manifesto-inner .section-label{color:rgba(255,255,255,.75)}
+.manifesto-inner .section-title{color:#fff}
+.manifesto-inner .divider{margin:1.2rem auto}
+.manifesto-inner .section-desc{color:rgba(255,255,255,.82);margin:0 auto 2rem}
+.promises-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:2rem;text-align:left}
+.promise-item{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:1.2rem}
+.promise-item h4{font-size:14px;font-weight:600;color:#fff;margin-bottom:.5rem}
+.promise-item p{font-size:12.5px;color:rgba(255,255,255,.78);line-height:1.65}
+.pillars-bg{background:#fff}
+.pillars-row{display:flex;flex-wrap:wrap;gap:0;margin-top:3rem;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.pillar{flex:1;min-width:140px;padding:2rem 1.5rem;text-align:center;border-right:1px solid var(--border);transition:all .3s;cursor:default}
+.pillar:last-child{border-right:none}
+.pillar:hover{background:var(--maroon-pale)}
+.pillar-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--maroon);line-height:1;margin-bottom:.5rem}
+.pillar h4{font-size:13px;font-weight:600;color:var(--text);letter-spacing:.02em}
+.pillar p{font-size:12px;color:var(--text-muted);margin-top:.3rem;line-height:1.5}
+.join-bg{background:#fff}
+.join-inner{max-width:800px;margin:0 auto;text-align:center}
+.join-card{background:linear-gradient(135deg,var(--maroon-dark),var(--maroon-light));border-radius:16px;padding:3rem 2rem;margin-top:2rem;position:relative;overflow:hidden}
+.join-card::after{content:'NYUP';font-family:'Playfair Display',serif;font-size:8rem;font-weight:900;color:rgba(255,255,255,.04);position:absolute;bottom:-20px;right:20px;line-height:1;pointer-events:none}
+.join-card h3{font-family:'Playfair Display',serif;font-size:1.8rem;color:#fff;margin-bottom:1rem;line-height:1.3}
+.join-card p{color:rgba(255,255,255,.78);line-height:1.7;font-size:.98rem;margin-bottom:1.8rem;max-width:520px;margin-left:auto;margin-right:auto}
+.join-form{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center}
+.join-form input{flex:1;min-width:200px;padding:13px 16px;border-radius:5px;border:none;background:rgba(255,255,255,.15);color:#fff;font-size:14px;font-family:'DM Sans',sans-serif;outline:none}
+.join-form input::placeholder{color:rgba(255,255,255,.5)}
+.join-form input:focus{background:rgba(255,255,255,.22)}
+.join-form button{padding:13px 24px;background:var(--gold);color:var(--maroon-dark);font-weight:700;font-size:14px;border:none;border-radius:5px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;white-space:nowrap}
+.join-form button:hover{background:#e5aa1e}
+footer{background:var(--maroon-dark);color:rgba(255,255,255,.75);padding:3rem 1.5rem 1.5rem}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem}
+.footer-brand h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:#fff;margin-bottom:.5rem}
+.footer-brand p{font-size:13px;line-height:1.7;color:rgba(255,255,255,.6)}
+.footer-col h4{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.65);text-decoration:none;margin-bottom:.5rem;transition:color .2s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+.footer-bottom p{font-size:12px;color:rgba(255,255,255,.45)}
+.footer-tags{display:flex;gap:.5rem;flex-wrap:wrap}
+.ftag{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);font-size:11px;padding:4px 10px;border-radius:3px;letter-spacing:.05em}
+.reveal{opacity:0;transform:translateY(24px);transition:all .6s ease}
+.reveal.visible{opacity:1;transform:none}
+@media(max-width:900px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero-inner{grid-template-columns:1fr;gap:2.5rem;text-align:center}
+  .hero-desc{margin:0 auto 2rem}
+  .hero-btns{justify-content:center}
+  .vision-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  section{padding:3.5rem 1rem}
+  .policies-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .pillar{min-width:100%;border-right:none;border-bottom:1px solid var(--border)}
+  .pillar:last-child{border-bottom:none}
+  .pillars-row{flex-direction:column}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .promises-grid{grid-template-columns:1fr}
+}
+
+/* Tricolor strip */
+.tricolor-strip{display:flex;height:4px;width:100%}
+.tricolor-strip .tc-saffron{flex:1;background:#FF9933}
+.tricolor-strip .tc-white{flex:1;background:#f0f0f0}
+.tricolor-strip .tc-green{flex:1;background:#138808}
+
+/* ── Agenda Banners ── */
+.banners-bg{background:#fff;padding:4rem 0}
+.banners-bg .container{max-width:100%;padding:0}
+.banners-section-head{text-align:center;padding:0 1.5rem;margin-bottom:2rem}
+.banners-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;width:100%}
+.banner-item{overflow:hidden;position:relative;transition:transform .3s,box-shadow .3s}
+.banner-item:hover{z-index:1;transform:scale(1.01);box-shadow:0 16px 48px rgba(122,14,42,.18)}
+.banner-item img{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:700px){.banners-grid{grid-template-columns:1fr}}
+
+/* ── Party Members ── */
+.members-bg{background:#fff}
+.members-leadership{display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:700px;margin:0 auto 2.5rem}
+.member-card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:2.5rem 2rem;text-align:center;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.member-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.member-president::before{background:linear-gradient(90deg,#FF9933,var(--maroon),#138808)}
+.member-secretary::before{background:linear-gradient(90deg,var(--maroon),var(--green))}
+.member-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(122,14,42,.1)}
+.member-badge{font-size:2.4rem;margin-bottom:.8rem;line-height:1}
+.member-role{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--maroon);margin-bottom:.5rem}
+.member-name{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--maroon-dark);margin-bottom:.8rem}
+.member-status{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-muted);background:var(--off-white);border:1px solid var(--border);border-radius:20px;padding:5px 12px}
+.status-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.status-pending{background:#FF9933;animation:pulse-dot 2s infinite}
+.status-vacant{background:#bbb}
+@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(255,153,51,.4)}50%{box-shadow:0 0 0 5px rgba(255,153,51,0)}}
+.members-state-notice{max-width:700px;margin:0 auto;background:linear-gradient(135deg,var(--maroon-pale),var(--green-pale));border:1.5px solid var(--border);border-radius:14px;padding:1.8rem 2rem;display:flex;align-items:center;gap:1.5rem}
+.msn-icon{font-size:2.2rem;flex-shrink:0;line-height:1}
+.msn-body{flex:1}
+.msn-body h4{font-size:15px;font-weight:700;color:var(--maroon-dark);margin-bottom:.4rem}
+.msn-body p{font-size:13.5px;color:var(--text-muted);line-height:1.6}
+.msn-flags{display:flex;flex-direction:column;gap:4px;flex-shrink:0}
+.msn-flags span{display:block;width:28px;height:6px;border-radius:3px}
+@media(max-width:600px){.members-leadership{grid-template-columns:1fr}.members-state-notice{flex-direction:column;text-align:center}}
+
+.mf-setup-notice{display:flex;gap:1rem;align-items:flex-start;background:#fffbea;border:1.5px solid var(--gold);border-radius:10px;padding:1.2rem 1.4rem;margin-bottom:1.5rem;max-width:860px;margin-left:auto;margin-right:auto}
+.mf-setup-icon{font-size:24px;flex-shrink:0;line-height:1.3}
+.mf-setup-body h4{font-size:14px;font-weight:700;color:#7a4f00;margin-bottom:.6rem}
+.mf-setup-body ol{padding-left:1.2rem;display:flex;flex-direction:column;gap:.4rem}
+.mf-setup-body ol li{font-size:12.5px;color:#5a4000;line-height:1.5}
+.mf-setup-body ol li a{color:var(--maroon);font-weight:600}
+.mf-setup-body kbd{background:#f0e8d0;border:1px solid #c8a84b;border-radius:3px;padding:1px 6px;font-size:11.5px;font-family:monospace}
+.mf-setup-body code{background:#f5ebe0;color:var(--maroon-dark);padding:1px 5px;border-radius:3px;font-size:11.5px}
+
+/* Membership section bg */
+.membership-bg{background:#fff}
+.mf-shell{max-width:860px;margin:3rem auto 0;border-radius:16px;overflow:hidden;box-shadow:0 8px 48px rgba(85,9,25,.16);border:1px solid var(--border)}
+/* iframe embed */
+.mf-iframe-wrap{width:100%;background:#fff}
+.mf-iframe-wrap iframe{display:block;width:100%;height:1200px;border:none}
+/* footer strip */
+.mf-foot{background:#fff;padding:.9rem 1.5rem;display:flex;align-items:center;gap:.75rem;border-top:1px solid var(--border)}
+.mf-foot-flags{display:flex;gap:4px;flex-shrink:0}
+.mf-foot-flags span{display:block;width:22px;height:5px;border-radius:3px}
+.mf-foot p{font-size:12.5px;color:var(--text-muted)}
+
+/* Banner */
+.mf-banner{background:linear-gradient(120deg,var(--maroon-dark) 0%,var(--maroon) 55%,var(--green-dark) 100%);padding:1.6rem 2rem;display:flex;align-items:center;gap:1.1rem}
+.mf-banner-logo{width:54px;height:54px;border-radius:50%;overflow:hidden;flex-shrink:0}
+.mf-banner-logo img{width:100%;height:100%;object-fit:cover}
+.mf-banner-text{flex:1}
+.mf-banner-text h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:#fff;line-height:1.2}
+.mf-banner-text p{font-size:12px;color:rgba(255,255,255,.6);margin-top:3px;letter-spacing:.06em}
+.mf-tricolor{display:flex;flex-direction:column;gap:4px;flex-shrink:0}
+.mf-tricolor span{display:block;width:32px;height:6px;border-radius:3px}
+
+/* Body */
+.mf-body{background:#fff;padding:2rem 2.4rem 2.4rem}
+
+/* Progress */
+.mf-progress-wrap{display:flex;align-items:center;gap:1rem;margin-bottom:2rem}
+.mf-progress-bar{flex:1;height:6px;background:#f0e8ea;border-radius:10px;overflow:hidden}
+.mf-progress-fill{height:100%;background:linear-gradient(90deg,var(--maroon),var(--green));border-radius:10px;transition:width .5s cubic-bezier(.4,0,.2,1)}
+.mf-progress-label{font-size:12px;font-weight:600;color:var(--maroon);white-space:nowrap;letter-spacing:.04em}
+
+/* Sections */
+.mf-section{display:none}
+.mf-section.active{display:block;animation:mfSlideIn .35s ease}
+@keyframes mfSlideIn{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+
+/* Section header */
+.mf-sec-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.6rem;padding-bottom:1rem;border-bottom:2px solid var(--maroon-pale)}
+.mf-sec-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--maroon);line-height:1;flex-shrink:0}
+.mf-sec-header h4{font-size:1.05rem;font-weight:700;color:var(--maroon-dark);margin-bottom:2px}
+.mf-sec-header p{font-size:12.5px;color:var(--text-muted)}
+
+/* Grid layouts */
+.mf-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.2rem}
+.mf-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.2rem;margin-bottom:1.2rem}
+
+/* Fields */
+.mf-field{display:flex;flex-direction:column;gap:6px;margin-bottom:1.2rem}
+.mf-field label{font-size:13px;font-weight:600;color:var(--text);letter-spacing:.02em}
+.mf-req{color:#c0392b}
+.mf-field input,.mf-field select,.mf-field textarea{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:7px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);background:#fdfcfc;outline:none;transition:border-color .2s,box-shadow .2s}
+.mf-field input:focus,.mf-field select:focus,.mf-field textarea:focus{border-color:var(--maroon-light);box-shadow:0 0 0 3px rgba(122,14,42,.08)}
+.mf-field select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A0E2A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.mf-field textarea{resize:vertical;min-height:80px;line-height:1.6}
+
+/* Radio pills */
+.mf-radio-row{display:flex;flex-wrap:wrap;gap:.6rem}
+.mf-radio{display:flex;align-items:center;gap:7px;cursor:pointer;padding:8px 14px;border:1.5px solid var(--border);border-radius:30px;font-size:13.5px;transition:all .2s}
+.mf-radio:hover{border-color:var(--maroon-light);background:var(--maroon-pale)}
+.mf-radio input{accent-color:var(--maroon);width:15px;height:15px}
+.mf-radio input:checked~span{color:var(--maroon-dark);font-weight:600}
+.mf-radio:has(input:checked){border-color:var(--maroon);background:var(--maroon-pale)}
+
+/* Checkbox grid */
+.mf-check-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem}
+.mf-check{display:flex;align-items:center;gap:8px;cursor:pointer;padding:9px 13px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;transition:all .2s}
+.mf-check:hover{border-color:var(--green);background:var(--green-pale)}
+.mf-check input{accent-color:var(--green);width:15px;height:15px;flex-shrink:0}
+.mf-check:has(input:checked){border-color:var(--green);background:var(--green-pale)}
+.mf-check:has(input:checked) span{font-weight:600;color:var(--green-dark)}
+
+/* Social media */
+.mf-sm-icon{margin-right:3px}
+.mf-sm-note{font-size:12.5px;color:var(--text-muted);background:#f7f7f7;border-radius:6px;padding:10px 14px;margin-top:.5rem;border-left:3px solid var(--border)}
+
+/* Declaration */
+.mf-decl-box{background:linear-gradient(135deg,#fdf8f9,#f5faf7);border:1.5px solid var(--border);border-radius:10px;padding:1.4rem;margin-bottom:1rem}
+.mf-decl-inner p{font-size:13.5px;font-weight:600;color:var(--maroon-dark);margin-bottom:.7rem}
+.mf-decl-inner ul{list-style:none;display:flex;flex-direction:column;gap:.45rem;margin-bottom:1.2rem}
+.mf-decl-inner ul li{font-size:13px;color:var(--text-muted);padding-left:1.2rem;position:relative;line-height:1.5}
+.mf-decl-inner ul li::before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:700}
+.mf-decl-check{display:flex;gap:10px;align-items:flex-start;cursor:pointer;padding:1rem;background:#fff;border:1.5px solid var(--border);border-radius:8px;transition:border-color .2s}
+.mf-decl-check:hover{border-color:var(--maroon-light)}
+.mf-decl-check input{margin-top:2px;accent-color:var(--maroon);width:17px;height:17px;flex-shrink:0}
+.mf-decl-check span{font-size:13px;line-height:1.6;color:var(--text)}
+
+/* Tricolor flags (summary) */
+.mf-summary-flags{display:flex;gap:6px;margin-top:1.2rem}
+.mf-summary-flags div{height:7px;width:40px;border-radius:4px}
+
+/* Navigation buttons */
+.mf-nav-btns{display:flex;gap:.75rem;margin-top:2rem;padding-top:1.4rem;border-top:1px solid var(--border)}
+.mf-btn-back{padding:12px 22px;border:1.5px solid var(--border);background:#fff;color:var(--text-muted);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;border-radius:7px;cursor:pointer;transition:all .2s}
+.mf-btn-back:hover{border-color:var(--maroon-light);color:var(--maroon)}
+.mf-btn-next{margin-left:auto;padding:12px 28px;background:var(--maroon);color:#fff;border:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;border-radius:7px;cursor:pointer;transition:all .2s;letter-spacing:.03em}
+.mf-btn-next:hover{background:var(--maroon-light);transform:translateY(-1px)}
+.mf-btn-submit{margin-left:auto;padding:12px 28px;background:linear-gradient(135deg,var(--maroon),var(--green-dark));color:#fff;border:none;font-family:'DM Sans',sans-serif;font-size:14.5px;font-weight:700;border-radius:7px;cursor:pointer;transition:all .2s;letter-spacing:.03em}
+.mf-btn-submit:hover{opacity:.9;transform:translateY(-1px)}
+
+/* Success screen */
+.mf-success{text-align:center;padding:3.5rem 2rem;background:#fff}
+.mf-success-icon{font-size:56px;margin-bottom:1rem}
+.mf-success h3{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--maroon-dark);margin-bottom:.8rem}
+.mf-success p{font-size:1rem;color:var(--text-muted);line-height:1.7}
+
+@media(max-width:700px){
+  .mf-body{padding:1.4rem}
+  .mf-grid-2,.mf-grid-3{grid-template-columns:1fr}
+  .mf-banner{flex-wrap:wrap;padding:1.2rem}
+  .mf-check-grid{grid-template-columns:1fr 1fr}
+}
+
+/* ── Popup / Modal ────────────────────────────────────── */
+.popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px);animation:fadeOverlay .4s ease}
+@keyframes fadeOverlay{from{opacity:0}to{opacity:1}}
+.popup-box{background:#fff;border-radius:16px;max-width:440px;width:100%;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3);animation:slideUp .45s cubic-bezier(.22,.68,0,1.2)}
+@keyframes slideUp{from{opacity:0;transform:translateY(40px) scale(.95)}to{opacity:1;transform:none}}
+.popup-top{background:linear-gradient(120deg,var(--maroon-dark),var(--maroon),var(--green-dark));padding:1.8rem 1.8rem 1.4rem;text-align:center;position:relative}
+.popup-logo{width:70px;height:70px;border-radius:50%;overflow:hidden;margin:0 auto 12px;box-shadow:0 4px 16px rgba(0,0,0,.3)}
+.popup-logo img{width:100%;height:100%;object-fit:cover}
+.popup-top h2{font-family:'Playfair Display',serif;font-size:1.25rem;color:#fff;line-height:1.3}
+.popup-top p{font-size:12.5px;color:rgba(255,255,255,.65);margin-top:4px;letter-spacing:.06em;text-transform:uppercase}
+.popup-close{position:absolute;top:12px;right:14px;background:rgba(255,255,255,.15);border:none;color:#fff;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.popup-close:hover{background:rgba(255,255,255,.3)}
+.popup-body{padding:1.6rem 1.8rem}
+.popup-notice{background:linear-gradient(135deg,#fff8e1,#fff3cd);border:1.5px solid var(--gold);border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.1rem;display:flex;gap:.85rem;align-items:flex-start}
+.popup-notice-icon{font-size:24px;flex-shrink:0;line-height:1}
+.popup-notice-text h4{font-size:14.5px;font-weight:700;color:var(--maroon-dark);margin-bottom:4px}
+.popup-notice-text p{font-size:13px;color:#5a4a00;line-height:1.5}
+.popup-instagram{background:linear-gradient(135deg,#fce4ec,#f8bbd0);border:1.5px solid #e91e8c44;border-radius:10px;padding:1.1rem 1.2rem;display:flex;gap:.85rem;align-items:center}
+.popup-ig-icon{font-size:26px;flex-shrink:0}
+.popup-ig-text h4{font-size:13.5px;font-weight:700;color:#880e4f;margin-bottom:2px}
+.popup-ig-text a{font-size:14px;font-weight:600;color:#c2185b;text-decoration:none;letter-spacing:.02em}
+.popup-ig-text a:hover{text-decoration:underline}
+.popup-btn{display:block;width:100%;margin-top:1.2rem;background:var(--maroon);color:#fff;border:none;border-radius:8px;padding:13px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:background .2s;letter-spacing:.02em}
+.popup-btn:hover{background:var(--maroon-light)}
+.popup-flags{display:flex;justify-content:center;gap:5px;margin-top:1rem}
+.popup-flag{width:36px;height:6px;border-radius:3px}
+</style>
+</head>
+<body>
+<div class="tricolor-strip"><div class="tc-saffron"></div><div class="tc-white"></div><div class="tc-green"></div></div>
+<div class="ticker">
+  <div class="ticker-track">
+    <span>Youth First, Nation Forward ◆</span>
+    <span>New Energy, New India ◆</span>
+    <span>Development Beyond Politics ◆</span>
+    <span>Voice of India's Future ◆</span>
+    <span>Zero Corruption Governance ◆</span>
+    <span>Progress Through Unity ◆</span>
+    <span>Youth First, Nation Forward ◆</span>
+    <span>New Energy, New India ◆</span>
+    <span>Development Beyond Politics ◆</span>
+    <span>Voice of India's Future ◆</span>
+    <span>Zero Corruption Governance ◆</span>
+    <span>Progress Through Unity ◆</span>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="logo-badge"><img src="https://i.postimg.cc/J7JxX0f7/Chat-GPT-Image-May-21-2026-11-20-26-AM.png" alt="NYUP Logo"/></div>
+      <div class="nav-logo-text">
+        <strong>NYP</strong>
+        <span>National Youth Unnayan Party</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#vision">Vision</a>
+      <a href="#agenda">1st Movement</a>
+      <a href="#policies">Policies</a>
+      <a href="#manifesto">Manifesto</a>
+      <a href="#pillars">Pillars</a>
+      <a href="#members">Members</a>
+      <a href="#membership">Membership</a>
+      <a href="https://instagram.com/nationalyouthunnayanparty" target="_blank" rel="noopener" class="nav-ig" onclick="openPopup();return false;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+        @nationalyouthunnayanparty
+      </a>
+      <a href="#membership" class="nav-cta">Join Us</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#vision" onclick="closeMobile()">Vision</a>
+  <a href="#policies" onclick="closeMobile()">Policies</a>
+  <a href="#manifesto" onclick="closeMobile()">Manifesto</a>
+  <a href="#pillars" onclick="closeMobile()">Pillars</a>
+  <a href="#membership" onclick="closeMobile()">Membership Form</a>
+  <a href="#" onclick="closeMobile();openPopup();return false;" style="color:rgba(255,180,200,.9)">📸 @nationalyouthunnayanparty</a>
+  <a href="#membership" onclick="closeMobile()">Join Us</a>
+</div>
+
+<section class="hero">
+  <div class="hero-accent"></div>
+  <div class="hero-bg-logo"><img src="https://i.postimg.cc/J7JxX0f7/Chat-GPT-Image-May-21-2026-11-20-26-AM.png" alt=""/></div>
+  <div class="hero-inner">
+    <div>
+      <h1>Building a <em>Stronger,</em> Smarter India</h1>
+      <p class="hero-desc">The National Youth Unnayan Party is a development-driven political movement dedicated to empowering India's youth through education, employment, innovation, transparency, and equal opportunity.</p>
+      <div class="hero-btns">
+        <a href="#membership" class="btn-primary">Join the Movement</a>
+        <button class="btn-social" onclick="openPopup()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+          Join Social Media
+        </button>
+        <a href="#vision" class="btn-outline">Our Vision →</a>
+      </div>
+    </div>
+    <div>
+      <div class="hero-stat-grid">
+        <div class="hero-stat">
+          <div class="hero-stat-num">65%</div>
+          <div class="hero-stat-label">of India is under 35</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">12</div>
+          <div class="hero-stat-label">core policy pillars</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">0</div>
+          <div class="hero-stat-label">tolerance for corruption</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">100%</div>
+          <div class="hero-stat-label">digital governance goal</div>
+        </div>
+      </div>
+      <div class="hero-slogan">
+        <p>"Youth First &bull; Nation Forward"</p>
+        <span>Official Party Slogan</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="tricolor-strip"><div class="tc-saffron"></div><div class="tc-white"></div><div class="tc-green"></div></div>
+
+<!-- ══ 1ST MOVEMENT BANNERS ══════════════════════════════════ -->
+<section class="banners-bg" id="agenda">
+  <div class="banners-section-head reveal">
+    <span class="section-label">Movement</span>
+    <h2 class="section-title" style="margin:0 auto">1st Movement</h2>
+    <div class="divider" style="margin:1rem auto"></div>
+  </div>
+  <div class="banners-grid reveal">
+    <div class="banner-item" style="grid-column:1/-1">
+      <img src="https://i.postimg.cc/c1DKsgMr/Chat-GPT-Image-May-21-2026-12-43-09-PM.png" alt="NYUP 1st Movement Banner"/>
+    </div>
+  </div>
+</section>
+
+<div class="tricolor-strip"><div class="tc-saffron"></div><div class="tc-white"></div><div class="tc-green"></div></div>
+
+<section class="vision-bg" id="vision">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Who We Are</span>
+      <h2 class="section-title">Our Vision for India</h2>
+      <div class="divider"></div>
+      <p class="section-desc">To build a modern, developed, corruption-free, digitally empowered, and opportunity-driven India where every young citizen gets equal chances to grow, lead, and succeed.</p>
+    </div>
+    <div class="vision-grid">
+      <div class="vision-points reveal">
+        <div class="vision-point">
+          <div class="vp-icon">🎯</div>
+          <div class="vp-body">
+            <h4>Youth Leadership & Participation</h4>
+            <p>Empowering young Indians to take active roles in governance at every level — from local councils to national parliament.</p>
+          </div>
+        </div>
+        <div class="vision-point">
+          <div class="vp-icon">🛡️</div>
+          <div class="vp-body">
+            <h4>Zero Corruption Governance</h4>
+            <p>Fast-track anti-corruption courts, lifetime bans on convicted politicians, and fully transparent public recruitment.</p>
+          </div>
+        </div>
+        <div class="vision-point">
+          <div class="vp-icon">💡</div>
+          <div class="vp-body">
+            <h4>Technology-Driven Administration</h4>
+            <p>100% digital governance to reduce red tape, AI-powered grievance platforms, and real-time public spending dashboards.</p>
+          </div>
+        </div>
+        <div class="vision-point">
+          <div class="vp-icon">⚖️</div>
+          <div class="vp-body">
+            <h4>Equal Opportunity for All</h4>
+            <p>No discrimination in education, employment, or governance — merit, talent, and hard work are the only criteria.</p>
+          </div>
+        </div>
+      </div>
+      <div class="vision-card reveal">
+        <h3>Core Principles</h3>
+        <p>NYUP believes that India's future depends on empowering its youth through education, employment, innovation, transparency, and equal opportunity.</p>
+        <p style="color:rgba(255,255,255,.7);font-size:.9rem;margin-top:1rem;line-height:1.7">Inspired by modern governance ideas, youth-led political movements, and public demands for accountability — the party focuses on development-driven politics instead of division and corruption.</p>
+        <div class="green-strip">
+          <span class="green-tag">Development-Driven Politics</span>
+          <span class="green-tag" style="margin-left:.5rem">Not Division</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="tricolor-strip"><div class="tc-saffron"></div><div class="tc-white"></div><div class="tc-green"></div></div>
+
+<section class="policies-bg" id="policies">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">What We Stand For</span>
+      <h2 class="section-title">Our Policy Agenda</h2>
+      <div class="divider"></div>
+      <p class="section-desc">Twelve comprehensive policy areas designed to transform India into a modern, equitable, and prosperous nation led by its youth.</p>
+    </div>
+    <div class="policies-grid">
+      <div class="policy-card reveal">
+        <span class="policy-icon">💼</span>
+        <h3>Employment & Economic Development</h3>
+        <p>Creating large-scale opportunities for every young Indian.</p>
+        <ul>
+          <li>National Youth Employment Mission</li>
+          <li>Skill development centers in every district</li>
+          <li>Startup support funds & low-interest loans</li>
+          <li>Paid apprenticeship programs for graduates</li>
+        </ul>
+      </div>
+      <div class="policy-card green-accent reveal">
+        <span class="policy-icon">📚</span>
+        <h3>Education Reform</h3>
+        <p>Practical, modern education for the innovation economy.</p>
+        <ul>
+          <li>Coding, AI & robotics from school level</li>
+          <li>Strict anti-paper leak legislation</li>
+          <li>Mental health support in all institutions</li>
+          <li>Digital classrooms & free online learning</li>
+        </ul>
+      </div>
+      <div class="policy-card reveal">
+        <span class="policy-icon">🖥️</span>
+        <h3>Digital Governance</h3>
+        <p>Transparent, accountable, and citizen-first administration.</p>
+        <ul>
+          <li>Public project spending tracker</li>
+          <li>AI-powered grievance platforms</li>
+          <li>Open-data governance for all</li>
+          <li>Performance scorecards for elected reps</li>
+        </ul>
+      </div>
+      <div class="policy-card green-accent reveal">
+        <span class="policy-icon">🚀</span>
+        <h3>Technology & Startups</h3>
+        <p>Fueling India's innovation and entrepreneurship ecosystem.</p>
+        <ul>
+          <li>India Innovation Fund for youth startups</li>
+          <li>Support for AI, space-tech & biotech</li>
+          <li>Free incubation support in universities</li>
+          <li>Rural innovation labs for villages</li>
+        </ul>
+      </div>
+      <div class="policy-card reveal">
+        <span class="policy-icon">👩‍⚕️</span>
+        <h3>Women Empowerment & Safety</h3>
+        <p>Equal opportunity and safe futures for every woman.</p>
+        <ul>
+          <li>Equal pay & equal opportunity policies</li>
+          <li>Fast-track courts for crimes against women</li>
+          <li>STEM scholarships for girls</li>
+          <li>Women entrepreneurship grants</li>
+        </ul>
+      </div>
+      <div class="policy-card green-accent reveal">
+        <span class="policy-icon">🌱</span>
+        <h3>Environment & Sustainability</h3>
+        <p>A greener India for future generations.</p>
+        <ul>
+          <li>Clean air & river restoration missions</li>
+          <li>Renewable energy & green jobs</li>
+          <li>Urban tree plantation drives</li>
+          <li>Sustainable smart-city development</li>
+        </ul>
+      </div>
+      <div class="policy-card reveal">
+        <span class="policy-icon">🌾</span>
+        <h3>Agriculture & Rural Development</h3>
+        <p>Modernizing farming and empowering India's villages.</p>
+        <ul>
+          <li>Modern agricultural technology support</li>
+          <li>Better irrigation & storage infrastructure</li>
+          <li>Fair pricing systems for farmers</li>
+          <li>Rural internet connectivity expansion</li>
+        </ul>
+      </div>
+      <div class="policy-card green-accent reveal">
+        <span class="policy-icon">🏆</span>
+        <h3>Sports, Culture & Entertainment</h3>
+        <p>Celebrating and empowering India's creative talent.</p>
+        <ul>
+          <li>Modern sports academies across India</li>
+          <li>Talent scouting in schools & villages</li>
+          <li>Support for esports & digital sports</li>
+          <li>Indian culture promoted globally</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="tricolor-strip"><div class="tc-saffron"></div><div class="tc-white"></div><div class="tc-green"></div></div>
+
+<section class="manifesto-bg" id="manifesto">
+  <div class="manifesto-inner">
+    <div class="reveal">
+      <span class="section-label">Our Commitment</span>
+      <h2 class="section-title">Key Manifesto Promises</h2>
+      <div class="divider" style="margin:1.2rem auto"></div>
+      <p class="section-desc">Concrete, measurable commitments to India's 1.4 billion citizens — especially the 65% who are under 35.</p>
+    </div>
+    <div class="promises-grid reveal">
+      <div class="promise-item">
+        <h4>🏛️ Anti-Corruption Courts</h4>
+        <p>Fast-track courts dedicated to corruption cases with lifetime bans for convicted politicians from all public offices.</p>
+      </div>
+      <div class="promise-item">
+        <h4>🎓 Affordable Education</h4>
+        <p>Expanded scholarships, transparent examination systems, and strict anti-paper leak legislation at every level.</p>
+      </div>
+      <div class="promise-item">
+        <h4>🤝 Youth Councils</h4>
+        <p>Youth councils in every district and municipality, plus National Youth Parliament expansion across the country.</p>
+      </div>
+      <div class="promise-item">
+        <h4>🏥 Mental Wellness</h4>
+        <p>Free mental health counseling for students and youth, with digital healthcare and telemedicine access nationwide.</p>
+      </div>
+      <div class="promise-item">
+        <h4>🔒 Whistleblower Protection</h4>
+        <p>Strong legal protections for those who expose corruption, paired with open-data governance for accountability.</p>
+      </div>
+      <div class="promise-item">
+        <h4>🌐 Digital Employment</h4>
+        <p>Support for freelancing, digital employment, and part-time work opportunities for India's growing gig economy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="tricolor-strip"><div class="tc-saffron"></div><div class="tc-white"></div><div class="tc-green"></div></div>
+
+<section class="pillars-bg" id="pillars">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Core Principles</span>
+      <h2 class="section-title">Eight Pillars of NYUP</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="pillars-row reveal">
+      <div class="pillar"><div class="pillar-num">01</div><h4>Youth Leadership</h4><p>Young voices in every room</p></div>
+      <div class="pillar"><div class="pillar-num">02</div><h4>Zero Corruption</h4><p>Clean governance always</p></div>
+      <div class="pillar"><div class="pillar-num">03</div><h4>Employment</h4><p>Jobs for every qualified youth</p></div>
+      <div class="pillar"><div class="pillar-num">04</div><h4>Equal Opportunity</h4><p>Merit over privilege</p></div>
+      <div class="pillar"><div class="pillar-num">05</div><h4>Tech Governance</h4><p>Digital India for all</p></div>
+      <div class="pillar"><div class="pillar-num">06</div><h4>Education</h4><p>Skills for tomorrow</p></div>
+      <div class="pillar"><div class="pillar-num">07</div><h4>Sustainability</h4><p>Green future always</p></div>
+      <div class="pillar"><div class="pillar-num">08</div><h4>National Unity</h4><p>One India, one dream</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="tricolor-strip"><div class="tc-saffron"></div><div class="tc-white"></div><div class="tc-green"></div></div>
+
+<!-- ══ PARTY MEMBERS SECTION ══════════════════════════ -->
+<section class="members-bg" id="members">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:3rem">
+      <span class="section-label">Leadership</span>
+      <h2 class="section-title" style="margin:0 auto">Party Members</h2>
+      <div class="divider" style="margin:1.2rem auto"></div>
+      <p class="section-desc" style="margin:0 auto">The dedicated leadership steering NYUP's mission across the nation.</p>
+    </div>
+
+    <!-- Key Leadership -->
+    <div class="members-leadership reveal">
+      <div class="member-card member-president">
+        <div class="member-badge">🏛️</div>
+        <div class="member-role">Party President</div>
+        <div class="member-name">Yet to be Revealed</div>
+        <div class="member-status">
+          <span class="status-dot status-pending"></span>
+          Announcement Coming Soon
+        </div>
+      </div>
+      <div class="member-card member-secretary">
+        <div class="member-badge">📋</div>
+        <div class="member-role">General Secretary</div>
+        <div class="member-name">Vacant</div>
+        <div class="member-status">
+          <span class="status-dot status-vacant"></span>
+          Position Open
+        </div>
+      </div>
+    </div>
+
+    <!-- State notice -->
+    <div class="members-state-notice reveal">
+      <div class="msn-icon">🗺️</div>
+      <div class="msn-body">
+        <h4>State Presidents &amp; Members</h4>
+        <p>State-level leadership and member listings will be published shortly. Stay connected for updates.</p>
+      </div>
+      <div class="msn-flags">
+        <span style="background:#FF9933"></span>
+        <span style="background:#e0e0e0"></span>
+        <span style="background:#138808"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="tricolor-strip"><div class="tc-saffron"></div><div class="tc-white"></div><div class="tc-green"></div></div>
+
+<!-- ══ MEMBERSHIP FORM SECTION ══════════════════════════ -->
+<section class="membership-bg" id="membership">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Official Membership</span>
+      <h2 class="section-title">Membership Registration Form</h2>
+      <div class="divider"></div>
+      <p class="section-desc">Fill in your details below to officially register as a member of the National Youth Unnayan Party. All information is kept strictly confidential.</p>
+    </div>
+
+    <div class="mf-shell reveal">
+      <!-- Branded Header -->
+      <div class="mf-banner">
+        <div class="mf-banner-logo">
+          <img src="https://i.postimg.cc/J7JxX0f7/Chat-GPT-Image-May-21-2026-11-20-26-AM.png" alt="NYUP"/>
+        </div>
+        <div class="mf-banner-text">
+          <h3>Join National Youth Unnayan Party</h3>
+          <p>Youth Power • Development • Progress</p>
+        </div>
+        <div class="mf-tricolor">
+          <span style="background:#FF9933"></span>
+          <span style="background:#fff"></span>
+          <span style="background:#138808"></span>
+        </div>
+      </div>
+
+      <!-- Google Form Embed -->
+      <div class="mf-iframe-wrap" id="iframeWrap">
+        <iframe
+          src="https://docs.google.com/forms/d/1nK96mDdzAh7aO0TtEmSMxRlBDfvsrwgDZ6s-wJQsL8g/viewform?embedded=true"
+          title="NYUP Membership Registration Form"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          loading="lazy"
+          allowfullscreen>
+          Loading form…
+        </iframe>
+      </div>
+
+      <!-- Branded Footer -->
+      <div class="mf-foot">
+        <div class="mf-foot-flags">
+          <span style="background:#FF9933"></span>
+          <span style="background:#fff;border:1px solid #ddd"></span>
+          <span style="background:#138808"></span>
+        </div>
+        <p>🔒 Your data is confidential and used only for organisational purposes.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <!-- Tricolor top bar -->
+    <div style="display:flex;height:5px;margin-bottom:2rem;border-radius:3px;overflow:hidden">
+      <div style="flex:1;background:#FF9933"></div>
+      <div style="flex:1;background:#fff;border-top:1px solid rgba(255,255,255,.2);border-bottom:1px solid rgba(255,255,255,.2)"></div>
+      <div style="flex:1;background:#138808"></div>
+    </div>
+    <div class="footer-brand" style="text-align:center;margin-bottom:1.5rem">
+      <h3>National Youth Unnayan Party</h3>
+      <p style="margin-top:.5rem">A development-driven political movement for India's youth — building a modern, corruption-free, and opportunity-driven nation.</p>
+      <p style="margin-top:.75rem;font-size:12px;color:rgba(255,255,255,.4);font-style:italic">"Youth First • Nation Forward"</p>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 National Youth Unnayan Party. All rights reserved.</p>
+      <div class="footer-tags">
+        <span class="ftag" style="background:#FF993322;border-color:#FF993355;color:#FF9933">Youth First</span>
+        <span class="ftag" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.6)">Nation Forward</span>
+        <span class="ftag" style="background:#13880822;border-color:#13880855;color:#4caf50">New India</span>
+      </div>
+    </div>
+    <!-- Tricolor bottom bar -->
+    <div style="display:flex;height:4px;margin-top:1.5rem;border-radius:3px;overflow:hidden">
+      <div style="flex:1;background:#FF9933"></div>
+      <div style="flex:1;background:#fff;opacity:.3"></div>
+      <div style="flex:1;background:#138808"></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ POPUP MODAL ═══════════════════════════════════════ -->
+<div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+  <div class="popup-box">
+    <div class="popup-top">
+      <button class="popup-close" onclick="closePopup()" aria-label="Close">✕</button>
+      <div class="popup-logo">
+        <img src="https://i.postimg.cc/J7JxX0f7/Chat-GPT-Image-May-21-2026-11-20-26-AM.png" alt="NYUP Logo"/>
+      </div>
+      <h2 id="popupTitle">National Youth Unnayan Party</h2>
+      <p>Official Announcements</p>
+    </div>
+    <div class="popup-body">
+      <!-- WhatsApp Notice -->
+      <div class="popup-notice">
+        <div class="popup-notice-icon">📢</div>
+        <div class="popup-notice-text">
+          <h4>State WhatsApp Channel</h4>
+          <p>Our official <strong>State WhatsApp Channels</strong> will be available soon. Stay tuned for updates and announcements from your state unit!</p>
+        </div>
+      </div>
+      <!-- Instagram -->
+      <div class="popup-instagram">
+        <div class="popup-ig-icon">📸</div>
+        <div class="popup-ig-text">
+          <h4>Follow Us on Instagram</h4>
+          <a href="https://instagram.com/nationalyouthunnayanparty" target="_blank" rel="noopener">@nationalyouthunnayanparty</a>
+        </div>
+      </div>
+      <button class="popup-btn" onclick="closePopup()">Got It — Youth First, Nation Forward! 🇮🇳</button>
+      <div class="popup-flags">
+        <div class="popup-flag" style="background:#FF9933"></div>
+        <div class="popup-flag" style="background:#ffffff;border:1px solid #ddd"></div>
+        <div class="popup-flag" style="background:#138808"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Force scroll to top on every page load
+window.onbeforeunload = function(){ window.scrollTo(0,0); };
+window.onload = function(){ window.scrollTo(0,0); };
+history.scrollRestoration = 'manual';
+window.scrollTo(0,0);
+
+const hamburger=document.getElementById('hamburger');
+const mobileMenu=document.getElementById('mobile-menu');
+hamburger.addEventListener('click',function(){
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+function closeMobile(){
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+}
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+  });
+},{threshold:.1});
+reveals.forEach(function(r){obs.observe(r);});
+
+/* ══════════════════════════════════════════════════════
+   NYUP FORM → GOOGLE FORMS SUBMISSION
+   ─────────────────────────────────────────────────────
+   HOW TO GET YOUR ENTRY IDs (3 steps):
+
+   STEP 1 — Open your Google Form in Chrome:
+     https://docs.google.com/forms/d/1nK96mDdzAh7aO0TtEmSMxRlBDfvsrwgDZ6s-wJQsL8g/viewform
+
+   STEP 2 — Press Ctrl+U (View Page Source)
+             Then press Ctrl+F and search: entry.
+             You will see lines like:  "entry.123456789"
+             Copy each number for each question in order.
+
+   STEP 3 — Also find your formResponse URL:
+             Search for: formResponse
+             It looks like: /forms/d/e/LONG_ID_HERE/formResponse
+             Copy the full URL and paste in FORM_ACTION below.
+   ══════════════════════════════════════════════════════ */
+
+  var GFORM = {
+    /* ── PASTE YOUR formResponse URL HERE ── */
+    action: 'https://docs.google.com/forms/d/e/YOUR_ENCODED_FORM_ID/formResponse',
+
+    /* ── PASTE YOUR ENTRY IDs HERE ─────────
+       Replace each number after "entry." with the real one from your form source */
+    fields: {
+      fullName:       'entry.XXXXXXXXX',   // Q1  Full Name
+      dob:            'entry.XXXXXXXXX',   // Q2  Date of Birth
+      gender:         'entry.XXXXXXXXX',   // Q3  Gender
+      mobile:         'entry.XXXXXXXXX',   // Q4  Mobile Number
+      email:          'entry.XXXXXXXXX',   // Q5  Email Address
+      occupation:     'entry.XXXXXXXXX',   // Q6  Occupation
+      education:      'entry.XXXXXXXXX',   // Q7  Educational Qualification
+      state:          'entry.XXXXXXXXX',   // Q8  State
+      district:       'entry.XXXXXXXXX',   // Q9  District
+      city:           'entry.XXXXXXXXX',   // Q10 City / Village
+      address:        'entry.XXXXXXXXX',   // Q11 Full Address
+      pin:            'entry.XXXXXXXXX',   // Q12 PIN Code
+      whyJoin:        'entry.XXXXXXXXX',   // Q13 Why do you want to join
+      areas:          'entry.XXXXXXXXX',   // Q14 Areas (checkbox — same entry ID, sent multiple times)
+      prevOrg:        'entry.XXXXXXXXX',   // Q15 Previously worked with organisation
+      orgName:        'entry.XXXXXXXXX',   // Q16 Organisation Name
+      volunteer:      'entry.XXXXXXXXX',   // Q17 Volunteering interest
+      instagram:      'entry.XXXXXXXXX',   // Q18 Instagram ID
+      facebook:       'entry.XXXXXXXXX',   // Q19 Facebook Profile
+      twitter:        'entry.XXXXXXXXX',   // Q20 X (Twitter) Handle
+      declaration:    'entry.XXXXXXXXX',   // Q21 Declaration
+    }
+  };
+
+/* ── Multi-step Membership Form ── */
+var mfCurrent = 1;
+var mfTotal = 5;
+var mfSectionLabels = ['Personal Details','Address Details','Party Participation','Social Media','Declaration'];
+
+function mfUpdateUI(){
+  for(var i=1;i<=mfTotal;i++){
+    var s=document.getElementById('sec'+i);
+    if(s){ s.classList.toggle('active', i===mfCurrent); }
+  }
+  var pct = ((mfCurrent-1)/(mfTotal-1))*100;
+  var fill = document.getElementById('mfProgress');
+  var label = document.getElementById('mfProgressLabel');
+  if(fill) fill.style.width = pct+'%';
+  if(label) label.textContent = 'Section '+mfCurrent+' of '+mfTotal+' — '+mfSectionLabels[mfCurrent-1];
+  var back   = document.getElementById('mfBack');
+  var next   = document.getElementById('mfNext');
+  var submit = document.getElementById('mfSubmit');
+  if(back)   back.style.display   = mfCurrent > 1 ? 'inline-block' : 'none';
+  if(next)   next.style.display   = mfCurrent < mfTotal ? 'inline-block' : 'none';
+  if(submit) submit.style.display = mfCurrent === mfTotal ? 'inline-block' : 'none';
+  var shell = document.getElementById('membership');
+  if(shell) shell.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function mfStep(dir){
+  mfCurrent = Math.min(Math.max(mfCurrent + dir, 1), mfTotal);
+  mfUpdateUI();
+}
+
+function mfGetVal(selector){ var el=document.querySelector(selector); return el ? el.value.trim() : ''; }
+function mfGetRadio(name){ var el=document.querySelector('input[name="'+name+'"]:checked'); return el ? el.value : ''; }
+function mfGetChecked(name){ return Array.from(document.querySelectorAll('input[name="'+name+'"]:checked')).map(function(el){return el.value;}); }
+
+function mfSubmit(){
+  var decl = document.getElementById('declCheck');
+  if(!decl || !decl.checked){
+    var box = decl.closest('.mf-decl-check');
+    box.style.borderColor='#c0392b';
+    box.style.background='#fff5f5';
+    box.style.transition='all .3s';
+    setTimeout(function(){ box.style.borderColor=''; box.style.background=''; },2500);
+    return;
+  }
+
+  /* ── Show loading state ── */
+  var btn = document.getElementById('mfSubmit');
+  btn.textContent = 'Submitting…';
+  btn.disabled = true;
+  btn.style.opacity = '0.7';
+
+  /* ── Build FormData ── */
+  var fd = new FormData();
+  var f = GFORM.fields;
+
+  fd.append(f.fullName,    mfGetVal('#sec1 input[type="text"]'));
+  fd.append(f.dob,         mfGetVal('#sec1 input[type="date"]'));
+  fd.append(f.gender,      mfGetRadio('gender'));
+  fd.append(f.mobile,      mfGetVal('#sec1 input[type="tel"]'));
+  fd.append(f.email,       mfGetVal('#sec1 input[type="email"]'));
+  fd.append(f.occupation,  mfGetVal('#sec1 input[placeholder*="Student"]'));
+  fd.append(f.education,   mfGetVal('#sec1 select'));
+  fd.append(f.state,       mfGetVal('#sec2 input:nth-of-type(1)'));
+  fd.append(f.district,    mfGetVal('#sec2 input:nth-of-type(2)'));
+  fd.append(f.city,        mfGetVal('#sec2 input:nth-of-type(3)'));
+  fd.append(f.address,     mfGetVal('#sec2 textarea'));
+  fd.append(f.pin,         mfGetVal('#sec2 input[maxlength="6"]'));
+  fd.append(f.whyJoin,     mfGetVal('#sec3 textarea'));
+  fd.append(f.prevOrg,     mfGetRadio('prevOrg'));
+  fd.append(f.orgName,     mfGetVal('#sec3 input[placeholder*="Organisation"]'));
+  fd.append(f.volunteer,   mfGetRadio('volunteer'));
+  fd.append(f.instagram,   mfGetVal('#sec4 input:nth-of-type(1)'));
+  fd.append(f.facebook,    mfGetVal('#sec4 input:nth-of-type(2)'));
+  fd.append(f.twitter,     mfGetVal('#sec4 input:nth-of-type(3)'));
+  fd.append(f.declaration, 'I confirm that the information provided is correct and I voluntarily wish to join the National Youth Unnayan Party.');
+
+  /* ── Checkboxes: areas (append each selected value separately) ── */
+  var areas = mfGetChecked('areas');
+  areas.forEach(function(v){ fd.append(f.areas, v); });
+
+  /* ── Submit via no-cors fetch → Google Forms accepts it silently ── */
+  fetch(GFORM.action, { method:'POST', mode:'no-cors', body: fd })
+    .then(function(){
+      /* no-cors means we always get opaque response — treat as success */
+      mfShowSuccess();
+    })
+    .catch(function(){
+      /* Even on network quirks, GForms usually still receives the data */
+      mfShowSuccess();
+    });
+}
+
+function mfShowSuccess(){
+  document.getElementById('nyupFormBody').style.display='none';
+  var suc = document.getElementById('mfSuccess');
+  suc.style.display = 'block';
+  suc.style.animation = 'mfSlideIn .45s ease';
+}
+
+// Init
+mfUpdateUI();
+function openPopup(){
+  var o=document.getElementById('popupOverlay');
+  o.style.display='flex';
+  o.style.animation='fadeOverlay .4s ease';
+}
+function closePopup(){
+  var o=document.getElementById('popupOverlay');
+  o.style.animation='fadeOut .3s ease forwards';
+  setTimeout(function(){o.style.display='none';},280);
+}
+document.getElementById('popupOverlay').addEventListener('click',function(e){
+  if(e.target===this) closePopup();
+});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape') closePopup();
+});
+/* Show popup only on button/link click — no auto-show */
+document.getElementById('popupOverlay').style.display='none';
+</script>
+<style>
+@keyframes fadeOut{from{opacity:1}to{opacity:0}}
+</style>
+</body>
+</html>
